@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "shop_TP_APITest",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

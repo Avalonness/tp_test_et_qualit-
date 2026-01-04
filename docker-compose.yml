@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: tp_postgres
+    environment:
+      POSTGRES_USER: tp
+      POSTGRES_PASSWORD: tp
+      POSTGRES_DB: tp_shop
+    ports:
+      - "5432:5432"
+    volumes:
+      - tp_pg_data:/var/lib/postgresql/data
+
+volumes:
+  tp_pg_data:
