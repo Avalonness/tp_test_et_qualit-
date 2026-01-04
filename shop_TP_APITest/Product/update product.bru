@@ -1,0 +1,22 @@
+meta {
+  name: update product
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:3000/products/2a487dac-a46b-4cd5-b2ad-4102ecee331b
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "stock": 15
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,6 +1,8 @@
 import express from "express";
 import type { Pool } from "pg";
 
+import { createProductRoutes } from "./product/product.routes.js";
+
 export type AppDeps = {
     pool: Pool;
 };
@@ -19,6 +21,8 @@ export function createApp({ pool }: AppDeps) {
             res.status(500).json({ status: "db_error" });
         }
     });
+
+    app.use("/products", createProductRoutes(pool));
 
     return app;
 }

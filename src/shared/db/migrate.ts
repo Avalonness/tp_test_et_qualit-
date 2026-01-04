@@ -5,7 +5,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 import { loadConfig } from "../config.js";
-import { createPool } from "./pool.ts";
+import { createPool } from "./pool.js";
 
 async function ensureMigrationsTable(pool: ReturnType<typeof createPool>) {
     await pool.query(`

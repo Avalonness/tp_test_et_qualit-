@@ -1,0 +1,16 @@
+meta {
+  name: delete product
+  type: http
+  seq: 5
+}
+
+delete {
+  url: http://localhost:3000/products/2a487dac-a46b-4cd5-b2ad-4102ecee331b
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

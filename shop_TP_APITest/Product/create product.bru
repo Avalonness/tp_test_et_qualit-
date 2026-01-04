@@ -1,0 +1,26 @@
+meta {
+  name: create product
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:3000/products
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "title": "Produit Test 2",
+    "description": "Description valide",
+    "priceCents": 500,
+    "promoPriceCents": 600,
+    "stock": 10
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
