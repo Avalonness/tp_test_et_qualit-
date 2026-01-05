@@ -30,26 +30,32 @@ DB_SSL=false
 NODE_ENV=development
 ```
 
-## Démarrer PostgreSQL (Docker)
+## Démarrer PostgreSQL et Initialiser la Base
 
-Lancer Postgres via Docker Compose :
+Lancer la DB, appliquer les migrations et peupler la base avec des données de test :
 
 ```bash
+npm run db:setup
+```
+
+Cette commande exécute séquentiellement :
+1. `docker compose up -d` (Lancement de Postgres)
+2. `npm run migrate` (Création des tables)
+3. `npm run seed` (Insertion de catégories et produits de test)
+
+## Commandes manuelles
+
+Si vous préférez exécuter les étapes une par une :
+
+```bash
+# 1. Lancer Docker
 docker compose up -d
-```
 
-Vérifier que le conteneur tourne :
-
-```bash
-docker ps
-```
-
-## Migrations (création des tables)
-
-Appliquer les migrations SQL :
-
-```bash
+# 2. Appliquer les migrations
 npm run migrate
+
+# 3. Seeder la base (optionnel)
+npm run seed
 ```
 
 ## Lancer l’application
