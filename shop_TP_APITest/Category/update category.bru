@@ -1,0 +1,24 @@
+meta {
+  name: update category
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:3000/categories/58413f2f-508c-4c54-bda8-00dd0682f108
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "title": "Titre Modifié",
+    "description": "Description mise à jour",
+    "color": "#000000"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

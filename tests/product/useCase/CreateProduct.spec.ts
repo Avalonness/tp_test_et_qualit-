@@ -1,6 +1,6 @@
-import { CreateProduct } from "../../../src/product/useCase/CreateProduct.js";
-import type { ProductRepository } from "../../../src/product/ports/ProductRepository.js";
-import { Product } from "../../../src/product/domain/Product.js";
+import { CreateProduct } from "../../../src/modules/product/useCase/CreateProduct.js";
+import type { ProductRepository } from "../../../src/modules/product/ports/ProductRepository.js";
+import { Product } from "../../../src/modules/product/domain/Product.js";
 
 class InMemoryProductRepository implements ProductRepository {
     public saved: Product[] = [];
@@ -35,7 +35,7 @@ describe("Cas d'utilisation CreateProduct", () => {
             title: "Produit Test",
             description: "Description valide",
             priceCents: 500,
-            promoPriceCents: 600,
+            promoPriceCents: 400,
             categoryId: null,
             stock: 10,
         });

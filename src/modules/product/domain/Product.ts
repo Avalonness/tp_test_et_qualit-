@@ -62,7 +62,7 @@ export class Product {
         // promo (énoncé : promo > prix)
         if (p.promoPriceCents != null) {
             if (!Number.isInteger(p.promoPriceCents)) throw new ProductValidationError("Le prix promo doit être un nombre entier");
-            if (p.promoPriceCents <= p.priceCents) throw new ProductValidationError("Le prix promo doit être supérieur au prix standard");
+            if (p.promoPriceCents >= p.priceCents) throw new ProductValidationError("Le prix promo doit être inférieur au prix standard");
         }
 
         // stock

@@ -1,5 +1,5 @@
-import { Product } from "../../../src/product/domain/Product.js";
-import { ProductValidationError } from "../../../src/product/domain/ProductErrors.js";
+import { Product } from "../../../src/modules/product/domain/Product.js";
+import { ProductValidationError } from "../../../src/modules/product/domain/ProductErrors.js";
 
 describe("Domaine Produit", () => {
     it("crée un produit valide", () => {
@@ -8,7 +8,7 @@ describe("Domaine Produit", () => {
             title: "Produit Test",
             description: "Description valide",
             priceCents: 500,
-            promoPriceCents: 600,
+            promoPriceCents: 400,
             categoryId: null,
             stock: 10,
         });
@@ -35,14 +35,14 @@ describe("Domaine Produit", () => {
         ).toThrow(ProductValidationError);
     });
 
-    it("rejette un prix promo <= prix", () => {
+    it("rejette un prix promo > prix", () => {
         expect(() =>
             Product.create({
                 id: "p1",
                 title: "Produit Test",
                 description: "Description valide",
                 priceCents: 500,
-                promoPriceCents: 400,
+                promoPriceCents: 600,
                 categoryId: null,
                 stock: 10,
             })

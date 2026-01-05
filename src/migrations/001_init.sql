@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS products (
   description VARCHAR(500) NOT NULL,
   price_cents INT NOT NULL,
   promo_price_cents INT,
-  category_id UUID REFERENCES categories(id),
+  category_id UUID REFERENCES categories(id) ON DELETE SET NULL,
   stock INT NOT NULL
 );
 

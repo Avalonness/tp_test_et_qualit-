@@ -8,7 +8,9 @@
     "build": "tsc -p tsconfig.json",
     "start": "node dist/server.js",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
-    "migrate": "tsx src/shared/db/migrate.ts"
+    "migrate": "tsx src/shared/db/migrate.ts",
+    "seed": "tsx src/migrations/seed.ts",
+    "db:setup": "docker compose up -d && npm run migrate && npm run seed"
   },
   "keywords": [],
   "author": "",
