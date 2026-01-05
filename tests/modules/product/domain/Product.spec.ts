@@ -1,5 +1,5 @@
-import { Product } from "../../../src/modules/product/domain/Product.js";
-import { ProductValidationError } from "../../../src/modules/product/domain/ProductErrors.js";
+import { Product } from "../../../../src/modules/product/domain/Product.js";
+import { ProductValidationError } from "../../../../src/modules/product/domain/ProductErrors.js";
 
 describe("Domaine Produit", () => {
     it("crée un produit valide", () => {

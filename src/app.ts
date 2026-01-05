@@ -3,6 +3,7 @@ import type { Pool } from "pg";
 
 import { createProductRoutes } from "./modules/product/product.routes.js";
 import { createCategoryRoutes } from "./modules/category/category.routes.js";
+import { createOrderRoutes } from "./modules/orders/order.routes.js";
 
 export type AppDeps = {
     pool: Pool;
@@ -25,6 +26,7 @@ export function createApp({ pool }: AppDeps) {
 
     app.use("/products", createProductRoutes(pool));
     app.use("/categories", createCategoryRoutes(pool));
+    app.use("/orders", createOrderRoutes(pool));
 
     return app;
 }

@@ -27,16 +27,34 @@ async function seed() {
         `, [electronicsId, booksId, clothingId]);
 
         console.log("Inserting products...");
+        const macbookId = randomUUID();
+        const kindleId = randomUUID();
+        const tshirtId = randomUUID();
+
+        console.log("Inserting products...");
         await pool.query(`
             INSERT INTO products (id, title, description, price_cents, promo_price_cents, category_id, stock) VALUES
             ($1, 'MacBook Pro', 'M2 Beast', 200000, 190000, $2, 10),
             ($3, 'Kindle', 'E-reader', 10000, NULL, $4, 50),
             ($5, 'T-Shirt', 'Cotton basic', 2000, NULL, $6, 100)
         `, [
-            randomUUID(), electronicsId,
-            randomUUID(), booksId,
-            randomUUID(), clothingId
+            macbookId, electronicsId,
+            kindleId, booksId,
+            tshirtId, clothingId
         ]);
+
+        console.log("Inserting orders...");
+        const orderId = randomUUID();
+        await pool.query(`
+            INSERT INTO orders (id, created_at, status, total_price_cents, payed_at, canceled_at) VALUES
+            ($1, NOW(), 'cart', 210000, NULL, NULL)
+        `, [orderId]);
+
+        await pool.query(`
+            INSERT INTO order_lines (order_id, product_id, unit_price_cents, quantity) VALUES
+            ($1, $2, 200000, 1),
+            ($1, $3, 10000, 1)
+        `, [orderId, macbookId, kindleId]);
 
         console.log("Seeding completed successfully!");
     } catch (e) {

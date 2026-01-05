@@ -67,6 +67,15 @@ export class Product {
 
         // stock
         if (!Number.isInteger(p.stock)) throw new ProductValidationError("Le stock doit être un nombre entier");
-        if (p.stock <= 0) throw new ProductValidationError("Le stock doit être supérieur à 0");
+        if (p.stock < 0) throw new ProductValidationError("Le stock doit être positif ou nul");
+    }
+
+    decrementStock(quantity: number) {
+        if (!Number.isInteger(quantity) || quantity <= 0) throw new ProductValidationError("La quantité à décrémenter doit être positive");
+        if (this.props.stock < quantity) throw new ProductValidationError("Stock insuffisant");
+
+        const next: ProductProps = { ...this.props, stock: this.props.stock - quantity };
+        Product.validate(next);
+        this.props = Product.normalize(next);
     }
 }

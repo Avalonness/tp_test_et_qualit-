@@ -1,0 +1,11 @@
+meta {
+  name: ShipOrder
+  type: http
+  seq: 6
+}
+
+post {
+  url: http://localhost:3000/orders/{{orderId}}/ship
+  body: none
+  auth: none
+}

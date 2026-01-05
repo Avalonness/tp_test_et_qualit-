@@ -1,6 +1,6 @@
-import { CreateProduct } from "../../../src/modules/product/useCase/CreateProduct.js";
-import type { ProductRepository } from "../../../src/modules/product/ports/ProductRepository.js";
-import { Product } from "../../../src/modules/product/domain/Product.js";
+import { CreateProduct } from "../../../../src/modules/product/useCase/CreateProduct.js";
+import type { ProductRepository } from "../../../../src/modules/product/ports/ProductRepository.js";
+import { Product } from "../../../../src/modules/product/domain/Product.js";
 
 class InMemoryProductRepository implements ProductRepository {
     public saved: Product[] = [];
